@@ -18,7 +18,7 @@ def heapSort(self,nums:list) -> list:
 
 # Main Function
 # Do not edit the code below
-if _name_=="_main_":
+if __name__ == "__main__":
     homework4  = Homework4()
     testCasesforSorting = []
     try:
@@ -64,3 +64,4 @@ if _name_=="_main_":
             print(f"Test Case {row} : PASSED")
         else:
              print(f"Test Case {row}: Failed (Expected : {expectedOutput}, Actual: {actualOutput})")
+ 

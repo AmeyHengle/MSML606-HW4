@@ -8,9 +8,32 @@ class Homework4:
 # Numbers can be negative, repeated, and floating point numbers
 # DO NOT USE THE INBUILT HEAPQ MODULE TO SOLVE THE PROBLEMS
 
-def randomQuickSort(self,nums:list) -> list:
-    # Todo: Implement randomized quicksort
-    pass
+def randomQuickSort(self, nums: list) -> list:
+    arrCopy = nums.copy()
+    self._quicksort(arrCopy, 0, len(arrCopy) - 1)
+    return arrCopy
+
+def _randomizedPartition(self, arr, low, high):
+    # swap a random element into the pivot position
+    randIdx = random.randint(low, high)
+    arr[randIdx], arr[high] = arr[high], arr[randIdx]
+    return self._partition(arr, low, high)
+
+def _partition(self, arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+def _quicksort(self, arr, low, high):
+    if low < high:
+        pivotIdx = self._randomizedPartition(arr, low, high)
+        self._quicksort(arr, low, pivotIdx - 1)
+        self._quicksort(arr, pivotIdx + 1, high)
 
 def heapSort(self,nums:list) -> list:
     # Todo: Implement heapsort

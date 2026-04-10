@@ -35,9 +35,35 @@ def _quicksort(self, arr, low, high):
         self._quicksort(arr, low, pivotIdx - 1)
         self._quicksort(arr, pivotIdx + 1, high)
 
-def heapSort(self,nums:list) -> list:
-    # Todo: Implement heapsort
-        pass
+def heapSort(self, nums: list) -> list:
+    arrCopy = nums.copy()
+    self._buildMaxHeap(arrCopy)
+    n = len(arrCopy)
+    for i in range(n - 1, 0, -1):
+        # move current max to end
+        arrCopy[0], arrCopy[i] = arrCopy[i], arrCopy[0]
+        self._heapify(arrCopy, i, 0)
+    return arrCopy
+
+def _buildMaxHeap(self, arr):
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        self._heapify(arr, n, i)
+
+def _heapify(self, arr, heapSize, rootIdx):
+    largest = rootIdx
+    leftChild = 2 * rootIdx + 1
+    rightChild = 2 * rootIdx + 2
+
+    if leftChild < heapSize and arr[leftChild] > arr[largest]:
+        largest = leftChild
+    if rightChild < heapSize and arr[rightChild] > arr[largest]:
+        largest = rightChild
+
+    if largest != rootIdx:
+        arr[rootIdx], arr[largest] = arr[largest], arr[rootIdx]
+        self._heapify(arr, heapSize, largest)
+ 
 
 # Main Function
 # Do not edit the code below
